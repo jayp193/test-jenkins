@@ -1,7 +1,7 @@
 class InsufficientAmount(Exception):
     pass
 
-
+# Wallet Class
 class Wallet(object):
 
     def __init__(self, initial_amount=0):
