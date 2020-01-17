@@ -1,2 +1,7 @@
 pathlib
 pytest-dependency
+certifi
+chardet
+idna
+requests
+urllib3
