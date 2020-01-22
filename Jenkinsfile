@@ -11,8 +11,8 @@ pipeline {
                 script {
                     diff_files = sh (script:'git diff --name-only origin/master | xargs',
                                      returnStdout: true).trim()
-                    for x in ${diff_files} {
-                        echo "${x}"
+                    for (int i = 0; i < diff_files.size(); i++) {
+                        echo "${diff_files[i]}"
                     } 
                 }
             }
