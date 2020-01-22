@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'python:3.6.8' } }
+    agent any
     environment {
         ENV_VAR      = 'dummy'
     }
@@ -7,13 +7,12 @@ pipeline {
         stage('Build'){
             steps {
                 sh 'python --version'
-		sh 'git fetch'
+	        sh 'git fetch'
                 script {
-                    diff_files = sh (script:'git diff --name-only origin/master | xargs',
-                                     returnStdout: true).trim()
-                    for (int i = 0; i < diff_files.size(); i++) {
-                        echo "${diff_files[i]}"
-                    } 
+                    println("Try1: ")
+                    commitChangeset = sh(returnStdout: true, script: 'git diff-tree --no-commit-id --name-status -r HEAD').trim()
+                    println("ChangeSets are:")
+                    println(commitChangeset)
                 }
             }
         }
@@ -24,3 +23,4 @@ pipeline {
         }
     }
 }
+
