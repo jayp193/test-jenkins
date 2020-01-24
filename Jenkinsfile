@@ -1,35 +1,33 @@
-pipeline {
+pipeline { 
     agent any
     environment {
-        def PROJECTS_AVAIL = ["streaming-api-client", "rest-api-python-scripts"]
-        def runtests = []
-        def testresults = []
+        PROJECTS_AVAIL = "streaming-api-client;rest-api-python-scripts"
+        TEST_RESULTS = ""
     }
     stages {
         stage('Build'){
-            steps {
+            steps {   
                 sh 'python --version'
                 sh 'git fetch'
                 script {
                     commitChangeset = sh(returnStdout: true, script: 'git diff-tree --no-commit-id --name-status -r HEAD').trim()
-                    for (int i = 0; i < env.PROJECTS_AVAIL.size(); i++) {
-                        if (commitChangeset.contains(env.PROJECTS_AVAIL[i])) {
-                            env.runtests.add(env.PROJECTS_AVAIL[i])
+                    proj = env.PROJECTS_AVAIL.tokenize(';')
+                    println(proj)
+                    println(proj.size())
+                    tests = []
+                    for (int i = 0; i < proj.size(); i++) {
+                        if (commitChangeset.contains(proj[i])) {
+                            tests.add(proj[i])
                         }
                     }
-                    println("ChangeSets are:")
-                    if (env.runtests.contains("streaming-api-client")) {
-                        println("Has streaming-api-client changes!")
-                    }
-                    if (env.runtests.contains("rest-api-python-scripts")) {
-                        println("Has rest-api-python-scripts changes!")
-                    }
-                }
+                    env.TESTS_TO_RUN = tests.join(';')
+                } 
             }
         }
         stage('Test') {
-            steps { 
-                sh 'ls' 
+            steps {   
+                sh 'ls'
+                echo "${TESTS_TO_RUN}"
             }
         }
     }
