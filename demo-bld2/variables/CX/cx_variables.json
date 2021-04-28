@@ -1,0 +1,19 @@
+{
+  "SG08KW8075": {
+    "_sys_lan_mac": "64:e8:81:d1:9e:80", 
+    "_sys_serial": "SG08KW8075", 
+    "hostname": "Auto-6300-10-03", 
+    "http_proxy": "http-proxy 10.80.2.217:8080 vrf mgmt", 
+    "int_mgmt": "interface mgmt\n    no shutdown\n    ip static 10.6.8.9/24\n    default-gateway 10.6.8.1", 
+    "int_vlan_201": "interface vlan 201\n  ip address 192.168.201.2/28\n  ip helper-address 192.168.201.1", 
+    "vlans": "1, 201"
+  }, 
+  "SG08KW8083": {
+    "_sys_lan_mac": "64:e8:81:d1:4f:80", 
+    "_sys_serial": "SG08KW8083", 
+    "hostname": "Auto-6300-10-04", 
+    "http_proxy": "http-proxy 10.80.2.217:8080 vrf mgmt", 
+    "int_mgmt": "interface mgmt\n    no shutdown\n    ip static 10.6.10.10/24\n    default-gateway 10.6.10.1", 
+    "vlans": "1, 201"
+  }
+}
