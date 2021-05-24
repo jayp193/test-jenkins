@@ -3,14 +3,14 @@
       "_sys_lan_mac": "7c:57:3c:c2:18:cc", 
       "_sys_serial": "CNK4K5104W", 
       "hostname": "AP-4", 
-      "vc_name": "ROS-BLD-2_IAP",
+      "vc_name": "IAP-SELF",
       "ssid_name": "emp-psk"
     }, 
     "PHKXKD55G7": {
       "_sys_lan_mac": "d0:d3:e0:cf:f5:a0", 
       "_sys_serial": "PHKXKD55G7", 
       "hostname": "AP-5", 
-      "vc_name": "ROS-BLD-2-IAP",
+      "vc_name": "IAP-SELF",
       "ssid_name": "emp-psk"
     }
   }
